@@ -1,0 +1,16 @@
+software_list:
+  - name: visual-studio-code
+    macos: "visual-studio-code"
+    windows: "Microsoft.VisualStudioCode"
+
+  - name: google-chrome
+    macos: "google-chrome"
+    windows: "Google.Chrome"
+
+  - name: iterm2
+    macos: "iterm2"
+    windows: ""  # iTerm2 is macOS only, skipped for Windows
+
+  - name: git
+    macos: "git"
+    windows: "Git.Git"
