@@ -1,0 +1,8 @@
+---
+- name: Run software check
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  roles:
+    - software_check

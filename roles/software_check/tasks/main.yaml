@@ -1,0 +1,21 @@
+---
+- name: Load Software list
+  include_vars: vars/main.yaml
+
+- name: Check software installation on macOS
+  command: brew list --cask {{ item.macos }}
+  register: macos_check
+  changed_when: false
+  failed_when: macos_check.rc not in [0, 1]
+  ignore_errors: yes
+  loop: "{{ software_list }}"
+  when: ansible_system == "Darwin" and item.macos != ""
+
+- name: Check software installation on Windows using winget
+  command: winget list "{{ item.windows }}"
+  register: winget_check
+  changed_when: false
+  failed_when: winget_check.rc not in [0, 1]
+  ignore_errors: yes
+  loop: "{{ software_list }}"
+  when: ansible_system == "Win32NT" and item.windows != ""
